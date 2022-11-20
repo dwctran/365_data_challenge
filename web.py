@@ -9,7 +9,7 @@ with open('styles.css') as f:
     st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 st.title('365 Data Science Student Analysis')
-tab1, tab2 = st.tabs(['Engagement Dashboard', 'Subscrition Prediction'])
+tab1, tab2, tab3 = st.tabs(['Engagement Dashboard', 'Subscrition Prediction', 'Repository Link'])
 with tab1:
     components.iframe("https://app.powerbi.com/view?r=eyJrIjoiNzcyODM2NDEtMDg2ZC00NTdjLWEyYzAtMmIzMzNmZmJmZjNjIiwidCI6IjA3ZDUyNWRmLWZhMGQtNGQwNS1iZjY5LTRkYmY0OTY0YzYyZCIsImMiOjEwfQ%3D%3D&pageName=ReportSection3ecabeb1724b04ee9691", width = 1280, height = 750)
 with tab2:
@@ -33,7 +33,9 @@ with tab2:
 
     with st.expander('See full table'):
         st.write(data.sort_values(by = 'convert_proba', ascending = False, ignore_index=True))
-    
+
+with tab3:
+    st.write('https://github.com/dwctran/365_data_challenge')
 
 
 
