@@ -1,0 +1,25 @@
+html, body, [class*="css"] {
+    font-family: 'Cascadia Code';
+}
+
+div.block-container.css-18e3th9.egzxvld2 {
+    padding: 0.5rem 5rem;
+}
+
+div.css-12w0qpk.e1tzin5v2{
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    
+}
+
+div.css-50ug3q.e16fv1kl3 {
+    font-size: 16px;
+
+}
+
+div.css-ocqkz7.e1tzin5v4 {
+    height: 80px;
+}
