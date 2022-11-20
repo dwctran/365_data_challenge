@@ -11,7 +11,7 @@ with open('styles.css') as f:
 st.title('365 Data Science Student Analysis')
 tab1, tab2 = st.tabs(['Engagement Dashboard', 'Subscrition Prediction'])
 with tab1:
-    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiNzcyODM2NDEtMDg2ZC00NTdjLWEyYzAtMmIzMzNmZmJmZjNjIiwidCI6IjA3ZDUyNWRmLWZhMGQtNGQwNS1iZjY5LTRkYmY0OTY0YzYyZCIsImMiOjEwfQ%3D%3D&pageName=ReportSection3ecabeb1724b04ee9691", width = 1024, height = 600)
+    components.iframe("https://app.powerbi.com/view?r=eyJrIjoiNzcyODM2NDEtMDg2ZC00NTdjLWEyYzAtMmIzMzNmZmJmZjNjIiwidCI6IjA3ZDUyNWRmLWZhMGQtNGQwNS1iZjY5LTRkYmY0OTY0YzYyZCIsImMiOjEwfQ%3D%3D&pageName=ReportSection3ecabeb1724b04ee9691", width = 1200, height = 600)
 with tab2:
     data = pd.read_csv('final_prediction_data.csv', encoding='latin-1')
     data['date_registered'] = pd.to_datetime(data['date_registered'], infer_datetime_format=True)
