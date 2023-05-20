@@ -1,18 +1,22 @@
-html, body, [class*="css"] {
-    font-family: 'Cascadia Code';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html,
+body,
+[class*="css"] {
+    font-family: 'Inter';
 }
 
 div.block-container.css-18e3th9.egzxvld2 {
     padding: 0.5rem 5rem;
 }
 
-div.css-12w0qpk.e1tzin5v2{
+div.css-12w0qpk.e1tzin5v2 {
     border: 2px solid white;
     border-radius: 10px;
     padding: 5px 10px;
     display: flex;
     align-items: center;
-    
+
 }
 
 div.css-50ug3q.e16fv1kl3 {
