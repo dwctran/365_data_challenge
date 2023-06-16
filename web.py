@@ -23,16 +23,23 @@ with tab2:
         "final_prediction_data.csv",
         encoding="latin-1",
     )
+    country_codes = pd.read_csv("country_codes.csv")
+    country_codes = country_codes[["name", "alpha-2"]]
+    country_codes = country_codes.rename(columns={"name": "country_name"})
+    data = data.merge(
+        country_codes, how="inner", left_on="student_country", right_on="alpha-2"
+    )
+
     data = data.drop(columns=data.columns[0], axis=1)
     data["date_registered"] = pd.to_datetime(
         data["date_registered"], infer_datetime_format=True
     )
     student_country = st.selectbox(
-        "Select a country", options=data["student_country"].sort_values().unique()
+        "Select a country", options=data["country_name"].sort_values().unique()
     )
     student_id = st.selectbox(
         "Select a student",
-        options=data[data.student_country == student_country]["student_id"],
+        options=data[data.country_name == student_country]["student_id"],
     )
     st.write(f"Student ID: {student_id}")
     date_registered = (
@@ -61,14 +68,18 @@ with tab2:
     col4.metric("Conversion Probability", conversion_probability)
 
     with st.expander("See full student information: "):
-        st.write(data[data["student_id"] == student_id].reset_index(drop=True))
-
-    with st.expander("See full table"):
-        st.write(
-            data.sort_values(
-                by="convert_proba", ascending=False, ignore_index=False
-            ).reset_index(drop=True)
+        data_to_display = data[data["student_id"] == student_id].reset_index(drop=True)
+        student_info = data_to_display.drop(
+            ["student_id", "student_country", "alpha-2"], axis=1
         )
+        st.write(student_info.reindex(sorted(student_info.columns), axis=1))
+    with st.expander("See full table"):
+        data_full = data.sort_values(
+            by="convert_proba", ascending=False, ignore_index=False
+        ).reset_index(drop=True)
+        data_full = data_full.rename(columns={"student_id": "a_student_id"})
+        data_full = data_full.drop(["student_country", "alpha-2"], axis=1)
+        st.write(data_full.reindex(sorted(data_full.columns), axis=1))
 
 with tab3:
     st.write("https://github.com/dwctran/365_data_challenge")
