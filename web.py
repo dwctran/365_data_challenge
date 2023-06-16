@@ -39,7 +39,9 @@ with tab2:
     )
     student_id = st.selectbox(
         "Select a student",
-        options=data[data.country_name == student_country]["student_id"],
+        options=data[data.country_name == student_country].sort_values(
+            by="convert_proba", ascending=False
+        )["student_id"],
     )
     st.write(f"Student ID: {student_id}")
     date_registered = (
